@@ -1,5 +1,5 @@
-Bera Küçükkurt 20290356- Ertuğrul Sert 21290772
-We used pygame module for this game.
+Ertuğrul Sert 21290772
+I used pygame module for this game.
 
 
 CATBALL 
