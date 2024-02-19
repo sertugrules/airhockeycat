@@ -1,9 +1,10 @@
-# airhockeycat
+# AIRHOCKEYCAT GAME
+This OOP Python 
+you need import pygame
 Ertuğrul Sert 
 I used pygame module for this game.
 
-# CATBALL 
-
+Instructions
 
 It is a game for two players.
 first player play with W and S (W goes to down and S goes to down).
