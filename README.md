@@ -12,6 +12,7 @@ The goal is to reliably scrape job postings from a mock API, normalize and valid
 
 The scraper relies on the mock API server. Start it with Docker:
 
+bash
 docker compose up
 
 ## Verify Server 
@@ -19,6 +20,7 @@ docker compose up
 
 ## Running the Scraper
 
+bash
 - python -m src.swe.scraper
 
 - **The scraper will:**
@@ -43,19 +45,6 @@ docker compose up
 
 - Posted date (ISO 8601)
 
-## Example Summary (from a successful run)
-
-=== SUMMARY ===
-
-- Total number of companies processed: 5000
-
-- Total jobs stored: 82386
-
-- Total applicants counted: 5904327
-
-- Total API requests made: 11203
-
-- Total time: 2536.78s
 
 
 ## Testing Instructions
@@ -70,6 +59,7 @@ The project includes comprehensive tests for the scraper and in-memory database.
 
 1. Make sure you have `pytest` installed. If not, install it with:
 
+bash
 pip install pytest
 
 ### 
@@ -112,7 +102,7 @@ pytest -v test.py
 
 ## Known Limitations and Bugs
 
-- Pagination limited to 10 pages per company; some jobs might not be captured if more pages exist.
+- Pagination limited to 10 pages per company; some jobs might not be captured if more pages exist.Occasionally, the API may return the same `nextPageToken` repeatedly due to inconsistent data. Without proper checks, the scraper could enter an infinite loop for a company e.g., `company000188`.
 - Timestamp normalization assumes UTC, which may not reflect original local times.
 - If an API request fails after max retries, remaining pages for that company are skipped.
 - JSON storage is not optimized for very large datasets.
@@ -126,3 +116,19 @@ pytest -v test.py
 2. **Enhanced Retry Logic**: Implement exponential backoff and jitter for more robust handling of API rate limits.
 4. **Logging and Monitoring**: Replace `print` statements with a configurable logging system, possibly with log levels (INFO, WARN, ERROR).
 5. **Schema Validation**: Integrate strict validation of API response data using `pydantic` models or JSON Schema.
+
+
+
+## Example Summary (from a successful run)
+
+=== SUMMARY ===
+
+- Total number of companies processed: 5000
+
+- Total jobs stored: 82386
+
+- Total applicants counted: 5904327
+
+- Total API requests made: 11203
+
+- Total time: 2536.78s
